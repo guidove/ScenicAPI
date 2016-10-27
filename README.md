@@ -10,7 +10,7 @@ Scenic is a Motorcycle Navigation App for iOS (iPhone/iPad/iPodTouch). With Scen
 Currently Scenic offers 2 ways of integrating:
 
 1. Provide links/buttons on your website or in your iOS app to send a route to Scenic.
-2. User can access routes he/she created/favorited on your site directly from Scenic and start navigating them. This kind of integration is custom and is not covered in this repository. If you're interested please feel free to [contact MotoMappers](mailto:support@motomappers). For an example please download the Scenic app and see how it already integrates with [Furkot](www.furkot.com) and [RouteYou](www.routeyou.com) in this way.
+2. User can access routes he/she creates/favorites on your site directly from Scenic and start navigating them. This kind of integration is custom and is not covered in this repository. If you're interested please feel free to [contact MotoMappers](mailto:support@motomappers). For an example please download the Scenic app and see how it already integrates with [Furkot](www.furkot.com) and [RouteYou](www.routeyou.com) in this way.
 
 
 ## Website Integration
