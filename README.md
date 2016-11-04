@@ -13,13 +13,13 @@ Currently Scenic offers 2 ways of integrating:
 2. User can access routes he/she creates/favorites on your site directly from Scenic and start navigating them. This kind of integration is custom and is not covered in this repository. If you're interested please feel free to [contact MotoMappers](mailto:support@motomappers). For an example please download the Scenic app and see how it already integrates with [Furkot](www.furkot.com) and [RouteYou](www.routeyou.com) in this way.
 
 ## Technical Options
-There are 2 ways you can call the Scenic API
+There are 2 ways you can call the Scenic Universal Links
 
 1. Using GET request (links with parameters included in the link)
 2. Using POST request (the parameters are included in the body of the request)
 
 POST request are recommended. This repository includes JavaScript, PHP and Swift libraries to make this easy to implement.
-GET requests are easier to implement, but they have 2 disadvantages: (1) the route data (e.g. the url to the gpx file) is exposed to the public as it's inside the link and (2) url length is [limited to 2000 characters](http://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers) which could become a problem when using the polyline or coordinates API endpoint.
+GET requests are easier to implement, but they have 2 disadvantages: (1) the route data (e.g. the url to the gpx file) is exposed to the public as it's inside the link and (2) url length is [limited to 2000 characters](http://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers) which could become a problem when using the polyline or coordinates universal links.
 
 # GET requests
 Using the GET requests is as simple as putting a link on your website. The link format is:
