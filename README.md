@@ -1,7 +1,10 @@
 # Scenic-Integration
 Scenic Integration is for online route planners and apps that want to offer a navigation solution to their users. I.e. users can use Scenic to navigate routes they create or find on your website or in your app.
 
-This repository currently offers PHP, JavaScript and Swift Libraries to Integrate your website and iOS app with Scenic
+This repository currently offers direct Universal Links and PHP, JavaScript and Swift Libraries to Integrate your website and iOS app with Scenic.
+All integration options recognize if a user is browsing on an iOS device or not: 
+- If the user is browsing on an iOS device or using your iOS App, and Scenic is installed, Scenic will automatically open upon clicking the link/button. If Scenic is not installed the Scenic App Store page will open.
+- If the user is not browsing on an iOS device the user is directed to a Scenic Webpage, upon where he/she can enter their Scenic credentials. The route is then uploaded to their Scenic account and upon opening Scenic on their device he/she will be notified that a route is ready to be imported.
 
 ## What's Scenic
 Scenic is a Motorcycle Navigation App for iOS (iPhone/iPad/iPodTouch). With Scenic users can prepare, navigate and record/track/document their Motorcycle Trips. For more information see [MotoMappers.com](http://www.motomappers.com) and [Scenic on the App Store](https://itunes.apple.com/us/app/scenic-tour-planner-navigation/id1089668246)
@@ -35,9 +38,6 @@ All the below text applies to POST requests
 
 ## Website Integration
 To provide links/buttons for sending routes to Scenic from your website you need the **JavaScript** library or the **PHP** library.
-The libraries recognize if a user is browsing on an iOS device or not: 
-- If the user is browsing on an iOS device and Scenic is installed, Scenic will automatically open upon clicking the link/button. If Scenic is not installed the Scenic App Store page will open.
-- If the user is not browsing on an iOS device the user is directed to a Scenic Webpage, upon where he/she can enter their Scenic credentials. The route is then uploaded to their Scenic account and upon opening Scenic on their device he/she will be notified that a route is ready to be imported.
 
 ### PHP Library
 ####Installation
@@ -64,7 +64,7 @@ The JavaScript library offers 3 functions (i.e. 3 ways to send a route to Scenic
 For more info and examples please see the JavaScript folder of this repository.
 
 ## iOS App Integration
-To send routes from your iOS App to Scenic you need the **Swift** library. This library utilizes the universal links of the Scenic app. If the Scenic app is installed Scenic will automatically open. If Scenic is not installed the Scenic App Store page will open.
+To send routes from your iOS App to Scenic you need the **Swift** library.
 
 ### Swift Library
 The Swift Library is written in **Swift 3**
