@@ -22,11 +22,11 @@ POST request are recommended. This repository includes JavaScript, PHP and Swift
 GET requests are easier to implement, but they have 2 disadvantages: (1) the route data (e.g. the url to the gpx file) is exposed to the public as it's inside the link and (2) url length is [limited to 2000 characters](http://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers) which could become a problem when using the polyline or coordinates API endpoint.
 
 # GET requests
-Using the GET requests is as simple as putting a link in your website. The link format is:
-`https://scenicapp.space/Scenic/api/import/<endpointname>?<parameter1name>=<parameter1value&<parameter2name>=<parameter2value>&...etc`
+Using the GET requests is as simple as putting a link on your website. The link format is:
+`https://scenicapp.space/Scenic/api/import/<endpointname>?<parameter1name>=<parameter1value>&<parameter2name>=<parameter2value>&...etc`
 - Endpoint names are `gpxurl`, `polyline` and `coordinates`
 - All parameter values need to be urlencoded EXCEPT polyline and coordinates
-- If you use GET requests from another iOS app you need to include the parametername `fromOtherApp` with parametersvalue `1`. So to your url add `&fromOtherApp=1`
+- If you use GET requests from another iOS app you need to include the parametername `fromOtherApp` with parametersvalue `1`. So, at the end of the url add `&fromOtherApp=1`
 
 For more info and a full example see the HTTP-GET folder of this repository.
 
@@ -83,7 +83,7 @@ For more info and an example project please see the Swift folder of this reposit
 
 # FAQs
 - How many route points can Scenic handle? -> Scenic can handle routes with thousands of points
-- If I send a gpxurl, will it need to be available forever? -> No, Scenic creates a copy of the GPX at the url and stores it temporarily (until the user imports it) on the Scenic server
+- If I send a gpxurl, will that url need to be reachable forever? -> No, Scenic creates a copy of the GPX at the url and stores it (until the user imports it) on the Scenic server. Your URL can stop existing a few seconds after the user clicked the link.
 - Will an imported route be stored on Scenic side? -> Yes. Whenever a user imports a route it will be added to his account so he can navigate it as much as he wants. The user can also edit it, duplicate it and publish it for all other Scenic users to see.
 
 
