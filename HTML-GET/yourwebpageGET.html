@@ -1,0 +1,51 @@
+<html>
+	
+	<br><br>
+	<!--**************************************************************
+	********************    Send GPX URL     **********************
+	***************************************************************
+	****  gpxurl: the url to the gpx file (String) (has to be direct link, no html wrappers like a dropbox link for example)
+	****  source: the name of your website or service (String)
+	***************************************************************
+	****  !!! ALL PARAMETERS NEED TO BE URLENCODED !!!   (e.g. http://www.hello.com becomes http%3A%2F%2Fwww.hello.com)
+	***************************************************************
+	****  the route name and description will be extracted from the GPX file
+	****  if the GPX contains more routes, tracks and/or waypoints they can all be imported by the user
+	************************************************************-->
+	
+	<a href='https://scenicapp.space/Scenic/api/import/gpxurl?gpxurl=http%3A%2F%2Fwww.motomappers.com%2FAccentrix.GPX&source=YourWebsiteName+GET'>Send gpxURL to Scenic with GET request</a>
+	
+	
+	
+	<br><br>
+	<!--/**************************************************************
+	*****  Send Polyline (Google Encoded Polyline Format) *********
+	***************************************************************
+	****  polyline: Encoded Polyline (String) (https://developers.google.com/maps/documentation/utilities/polylinealgorithm)
+	****  name: the name of the route (String)
+	****  descr: the description of the route (String)
+	****  source: the name of your website or service (String)
+	***************************************************************
+	****  !!! PARAMETERS NEED TO BE URLENCODED, except polyline !!!   (e.g. Your Source Name becomes Your+Source+Name)
+	**************************************************************-->
+	
+	<a href='https://scenicapp.space/Scenic/api/import/polyline?polyline=_p~iF~ps|U_ulLnnqC_mqNvxq`@&name=Polyline+Name+GET&descr=Polyline+Description+GET&source=YourWebsiteName+GET'>Send route polyline to Scenic with GET request</a>
+	
+    
+    
+    <br><br>
+    <!--/**************************************************************
+	********************  Send Coordinates ***********************
+	**************************************************************
+	****  coordinates: String of coordinates in format lat1,lon1|lat2,lon2|lat3,lon3 (e.g. 28.502011,77.0853534524|28.5021994638,77.0848774538)
+	****     6 digits precision for the lat and lon components is sufficient
+	****  name: the name of the route (String)
+	****  descr: the description of the route (String)
+	****  source: the name of your website or service (String)
+	***************************************************************
+	****  !!! PARAMETERS NEED TO BE URLENCODED, except coordinatees !!!   (e.g. Your Source Name becomes Your+Source+Name)
+	**************************************************************-->
+	
+	<a href='https://scenicapp.space/Scenic/api/import/coordinates?coordinates=28.5020112345,77.0853534524|28.5021994638,77.0848774538|28.5026335458,77.0850589642|28.5029786472,77.085397485&name=Coordinates+Name+GET&descr=Coordinates+Description+GET&source=YourWebsiteName+GET'>Send route coordinates to Scenic with GET request</a>
+	
+</html>
