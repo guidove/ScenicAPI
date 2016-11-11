@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,31 +22,61 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Csg-J5-WUu" userLabel="button">
-                                <state key="normal" title="send gpxurl to Scenic"/>
+                                <rect key="frame" x="72" y="40" width="231" height="30"/>
+                                <state key="normal" title="send gpxurl to Scenic for IMPORT"/>
                                 <connections>
                                     <action selector="tappedButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ml7-6A-Pey"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ec-4W-is3" userLabel="button1">
-                                <state key="normal" title="send polyline to scenic"/>
+                                <rect key="frame" x="67.5" y="78" width="240" height="30"/>
+                                <state key="normal" title="send polyline to scenic for IMPORT"/>
                                 <connections>
                                     <action selector="tappedButton1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Yv8-XS-gc1"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYz-So-I3q" userLabel="button2">
-                                <state key="normal" title="send coordinates to scenic"/>
+                                <rect key="frame" x="53.5" y="116" width="268" height="30"/>
+                                <state key="normal" title="send coordinates to scenic for IMPORT"/>
                                 <connections>
                                     <action selector="tappedButton2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A8p-gE-ZSk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WdO-2T-aMO" userLabel="Button3">
+                                <rect key="frame" x="50" y="186" width="274" height="30"/>
+                                <state key="normal" title="send polyline to Scenic for NAVIGATION"/>
+                                <connections>
+                                    <action selector="tappedButton3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K6O-QG-oPv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qYo-Gd-q2M" userLabel="Button4">
+                                <rect key="frame" x="37" y="224" width="300" height="30"/>
+                                <state key="normal" title="send coordinates to scenic for NAVIGATION"/>
+                                <connections>
+                                    <action selector="tappedButton4:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a0T-bw-BWj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z18-nI-WAS" userLabel="Button5">
+                                <rect key="frame" x="51.5" y="262" width="271" height="30"/>
+                                <state key="normal" title="send single coordinate for NAVIGATION"/>
+                                <connections>
+                                    <action selector="tappedButton5:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MEi-06-dze"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="eYz-So-I3q" firstAttribute="top" secondItem="6ec-4W-is3" secondAttribute="bottom" constant="8" id="0AA-Ni-GT1"/>
+                            <constraint firstItem="qYo-Gd-q2M" firstAttribute="top" secondItem="WdO-2T-aMO" secondAttribute="bottom" constant="8" id="H2N-Jc-zJf"/>
+                            <constraint firstItem="WdO-2T-aMO" firstAttribute="top" secondItem="eYz-So-I3q" secondAttribute="bottom" constant="40" id="NPU-dx-TCA"/>
+                            <constraint firstItem="z18-nI-WAS" firstAttribute="top" secondItem="qYo-Gd-q2M" secondAttribute="bottom" constant="8" id="Oxu-Cf-M9x"/>
+                            <constraint firstItem="qYo-Gd-q2M" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SOn-LA-OoO"/>
                             <constraint firstItem="Csg-J5-WUu" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="ah3-It-rBJ"/>
                             <constraint firstItem="eYz-So-I3q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="flM-lG-rnI"/>
                             <constraint firstItem="6ec-4W-is3" firstAttribute="top" secondItem="Csg-J5-WUu" secondAttribute="bottom" constant="8" id="gxw-eB-ZU3"/>
                             <constraint firstItem="Csg-J5-WUu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jeh-G0-QRi"/>
+                            <constraint firstItem="WdO-2T-aMO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rWC-EC-Lqy"/>
+                            <constraint firstItem="z18-nI-WAS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vfu-YS-k83"/>
                             <constraint firstItem="6ec-4W-is3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="y2x-WV-RzT"/>
                         </constraints>
                     </view>

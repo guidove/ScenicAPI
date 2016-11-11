@@ -36,15 +36,15 @@ function post(path, params) {
 
 
 /**************************************************************
-********************    Send GPX URL     **********************
+**************   Send GPX URL for IMPORT    *******************
 ***************************************************************
-****  gpxurl: the url to the gpx file (String) (has to be direct link, no html wrappers like a dropbox link for example)
-****  source: the name of your website or service (String)
+****  gpxurl (required): the url to the gpx file (String) (has to be direct link, no html wrappers like a dropbox link for example)
+****  source (optional): the name of your website or service (String)
 ***************************************************************
 ****  the route name and description will be extracted from the GPX file
 ****  if the GPX contains more routes, tracks and/or waypoints they can all be imported by the user
 **************************************************************/
-function sendToScenicForImport_gpxurl(gpxurl, source) {
+function sendToScenicForImport_gpxurl(gpxurl, source = "") {
 	var params = [];
 	params["source"] = source;
 	params["gpxurl"] = gpxurl;
@@ -53,14 +53,14 @@ function sendToScenicForImport_gpxurl(gpxurl, source) {
 
 
 /**************************************************************
-*****  Send Polyline (Google Encoded Polyline Format) *********
+*****               Send Polyline for IMPORT          *********
 ***************************************************************
-****  polyline: Encoded Polyline (String) (https://developers.google.com/maps/documentation/utilities/polylinealgorithm)
-****  name: the name of the route (String)
-****  descr: the description of the route (String)
-****  source: the name of your website or service (String)
+****  polyline (required): Encoded Polyline (String) (https://developers.google.com/maps/documentation/utilities/polylinealgorithm)
+****  name: (optional) the name of the route (String)
+****  descr (optional): the description of the route (String)
+****  source (optional): the name of your website or service (String)
 **************************************************************/
-function sendToScenicForImport_polyline(polyline, name, descr, source) {
+function sendToScenicForImport_polyline(polyline, name = "", descr = "", source = "") {
 	var params = [];
 	params["source"] = source;
 	params["polyline"] = polyline;
@@ -71,14 +71,14 @@ function sendToScenicForImport_polyline(polyline, name, descr, source) {
 
 
 /**************************************************************
-********************  Send Coordinates ***********************
+************       Send Coordinates for IMPORT      **********
 **************************************************************
-****  coordinates: Array of coordinates (Array of arrays with lat as element 0 and lon as element 1) E.g. coordinates[0][0] = 32.123456; coordinates[0][1] = 17.654321;
-****  name: the name of the route (String)
-****  descr: the description of the route (String)
-****  source: the name of your website or service (String)
+****  coordinates (required): Array of coordinates (Array of arrays with lat as element 0 and lon as element 1) E.g. coordinates[0][0] = 32.123456; coordinates[0][1] = 17.654321;
+****  name (optional): the name of the route (String)
+****  descr (optional): the description of the route (String)
+****  source (optional): the name of your website or service (String)
 **************************************************************/
-function sendToScenicForImport_coordinates(coordinates, name, descr, source) {
+function sendToScenicForImport_coordinates(coordinates, name = "", descr = "", source = "") {
 	var params = [];
 	params["source"] = source;
 	params["coordinates"] = stringOfCoordinatesArray(coordinates);
@@ -87,4 +87,57 @@ function sendToScenicForImport_coordinates(coordinates, name, descr, source) {
 	post("https://scenicapp.space/api/import/coordinates", params);
 }
 
+
+/**************************************************************
+*****               Send Polyline for NAVIGATION      *********
+***************************************************************
+****  polyline (required): Encoded Polyline (String) (https://developers.google.com/maps/documentation/utilities/polylinealgorithm)
+****  the polyline has to contain at least 2 coordinates and at the most 200 coordinates
+****  name (Optional): the name of the route (String)
+****  routeMode (Optional): F for Fastest, S for Shortest, E for Efficient (Defaults to F)
+****  vehicleType (Optional): C for Car/Motorcycle, B for Bicycle, P for Pedestrian (Defaults to C)
+**************************************************************/
+function sendToScenicForNavigation_polyline(polyline, name = "", routeMode = "F", vehicleType = "C") {
+	var params = [];
+	params["name"] = name;
+	params["polyline"] = polyline;
+	params["routeMode"] = routeMode;
+	params["vehicleType"] = vehicleType;
+
+	post("https://scenicapp.space/api/navigate/polyline", params);
+}
+
+
+/**************************************************************
+************       Send Coordinates for NAVIGATION   **********
+**************************************************************
+****  coordinates(Required): Array of coordinates (Array of arrays with lat as element 0 and lon as element 1) E.g. coordinates[0][0] = 32.123456; coordinates[0][1] = 17.654321;
+****  - 6 digits precision for the lat and lon components is sufficient
+****  - there should be at least 2 coordinate and at the most 200 coordinates
+****  name (Optional): the name of the route (String)
+****  routeMode (Optional): F for Fastest, S for Shortest, E for Efficient (Defaults to F)
+****  vehicleType (Optional): C for Car/Motorcycle, B for Bicycle, P for Pedestrian (Defaults to C)
+**************************************************************/
+function sendToScenicForNavigation_coordinates(coordinates, name = "", routeMode = "F", vehicleType = "C") {
+	var params = [];
+	params["coordinates"] = stringOfCoordinatesArray(coordinates);
+	params["name"] = name;
+	params["routeMode"] = routeMode;
+	params["vehicleType"] = vehicleType;
+
+	post("https://scenicapp.space/api/navigate/coordinates", params);
+}
+
+/*************************************************************
+************   Send Single Coordinate for NAVIGATION   *******
+**************************************************************
+****  coordinate: Array with lat as element 0 and lon as element 1. E.g. coordinates[0] = 32.123456; coordinates[1] = 17.654321;
+****  - 6 digits precision for the lat and lon components is sufficient
+**************************************************************/
+function sendToScenicForNavigation_coordinate(coordinate, name) {
+	var params = [];
+	params["name"] = name;
+	params["coordinate"] = roundToSix(coordinate[0]).toFixed(6) + "," + roundToSix(coordinate[1]).toFixed(6)
+	post("https://scenicapp.space/api/navigate/coordinate", params);
+}
 

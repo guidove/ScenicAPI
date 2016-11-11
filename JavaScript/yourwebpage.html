@@ -1,15 +1,7 @@
 <html>
 	<head>
 		<script src='scenicapi.js'></script>
-	</head>
-	
-	<br><br>
-	<a href='javascript:void(0);' onclick='sendToScenicForImport_gpxurl("http://www.motomappers.com/Accentrix.GPX", "YourWebsiteName JS");'>Send gpxURL to Scenic</a>
-	<br><br>
-	<a href='javascript:void(0);' onclick='sendToScenicForImport_polyline("_p~iF~ps|U_ulLnnqC_mqNvxq`@", "Polyline Name JS", "Polyline Description JS", "YourWebsiteName JS");'>Send route polyline to Scenic</a>
-	<br><br>
-	
-	<script>
+			<script>
 		var coordinates = 
 			[
 				[28.5020112345,77.0853534524],
@@ -17,9 +9,34 @@
 				[28.5026335458,77.0850589642],
 				[28.5029786472,77.085397485]
 			];
+		var coordinate = [19.415,-99.098377];
 	</script>
-	<a href='javascript:void(0);' onclick='sendToScenicForImport_coordinates(coordinates, "Coordinates Name JS", "Coordinates Description JS", "YourWebsiteName JS");'>Send route coordinates to Scenic</a>
+
+	</head>
+	
 	<br><br>
+	<h1>Links to send a route to Scenic for IMPORT. Scenic will open (if installed) and import of the route will start
+	</h1>
+	<br><br>
+	<a href='javascript:void(0);' onclick='sendToScenicForImport_gpxurl("http://www.motomappers.com/Accentrix.GPX", "YourWebsiteName JS");'>Send gpxURL to Scenic for IMPORT</a>
+	<br><br>
+	<a href='javascript:void(0);' onclick='sendToScenicForImport_polyline("wxk~FvbgvOkEuaBj]m}Ajm@qnBp`Axv@bj@qaAxk@mjCjM{cB", "Polyline Name JS", "Polyline Description JS", "YourWebsiteName JS");'>Send route polyline to Scenic for IMPORT</a>
+	<br><br>
+	<a href='javascript:void(0);' onclick='sendToScenicForImport_coordinates(coordinates, "Coordinates Name JS", "Coordinates Description JS", "YourWebsiteName JS");'>Send route coordinates to Scenic for IMPORT</a>
+	<br><br>
+	
+	
+	<br><br>
+	<h1>Links to send a route or location to Scenic for NAVIGATION. Scenic will open (if installed) and the route or location will be ready to navigate. All the user has to do is tap 'Start'.
+	</h1>
+	<br><br>
+	<a href='javascript:void(0);' onclick='sendToScenicForNavigation_polyline("wxk~FvbgvOkEuaBj]m}Ajm@qnBp`Axv@bj@qaAxk@mjCjM{cB", "Route from Web", "F", "C");'>Send route polyline to Scenic for NAVIGATION</a>
+	<br><br>
+	<a href='javascript:void(0);' onclick='sendToScenicForNavigation_coordinates(coordinates, "Route from Web", "F", "C");'>Send route coordinates to Scenic for NAVIGATION</a>
+	<br><br>
+	<a href='javascript:void(0);' onclick='sendToScenicForNavigation_coordinate(coordinate, "Location from Web");'>Send location coordinate to Scenic for NAVIGATION</a>
+	<br><br>
+
 	
 	
 </html>
