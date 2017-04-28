@@ -17,7 +17,7 @@
 	****  if the GPX contains more routes, tracks and/or waypoints they can all be imported by the user
 	************************************************************-->
 	
-	<a href='https://scenicapp.space/Scenic/api/import/gpxurl?gpxurl=http%3A%2F%2Fwww.motomappers.com%2FAccentrix.GPX&source=YourWebsiteName%20GET'>Send gpxURL to Scenic for Import (with GET request)</a>
+	<a href='https://scenicapp.space/Scenic/api/import/gpxurl?gpxurl=http%3A%2F%2Fwww.motomappers.com%2FAccentrix.GPX&source=YourWebsiteName'>Send gpxURL to Scenic for Import (with GET request)</a>
 	
 	
 	
@@ -33,7 +33,7 @@
 	****  !!! PARAMETERS NEED TO BE URLENCODED, except polyline !!!   (e.g. Your Source Name becomes Your%20Source%20Name)
 	**************************************************************-->
 	
-	<a href='https://scenicapp.space/Scenic/api/import/polyline?polyline=wxk~FvbgvOkEuaBj]m}Ajm@qnBp`Axv@bj@qaAxk@mjCjM{cB&name=Polyline%20Name%20GET&descr=Polyline%20Description%20GET&source=YourWebsiteName%20GET'>Send route polyline to Scenic for Import (with GET request)</a>
+	<a href='https://scenicapp.space/Scenic/api/import/polyline?polyline=wxk~FvbgvOkEuaBj]m}Ajm@qnBp`Axv@bj@qaAxk@mjCjM{cB&name=name=RouteName&descr=RouteDescription&source=YourWebsiteName'>Send route polyline to Scenic for Import (with GET request)</a>
 	
     
     
@@ -50,7 +50,7 @@
 	****  !!! PARAMETERS NEED TO BE URLENCODED, except coordinatees !!!   (e.g. Your Source Name becomes Your%20Source%20Name)
 	**************************************************************-->
 	
-	<a href='https://scenicapp.space/Scenic/api/import/coordinates?coordinates=28.5020112345,77.0853534524|28.5021994638,77.0848774538|28.5026335458,77.0850589642|28.5029786472,77.085397485&name=Coordinates%20Name%20GET&descr=Coordinates%20Description%20GET&source=YourWebsiteName%20GET'>Send route coordinates to Scenic for Import (with GET request)</a>
+	<a href='https://scenicapp.space/Scenic/api/import/coordinates?coordinates=28.5020112345,77.0853534524|28.5021994638,77.0848774538|28.5026335458,77.0850589642|28.5029786472,77.085397485&name=RouteName&descr=RouteDescription&source=YourWebsiteName'>Send route coordinates to Scenic for Import (with GET request)</a>
 	
 	
 	<br><br>
@@ -64,11 +64,11 @@
 	****  polyline (Required): Encoded Polyline (String) (https://developers.google.com/maps/documentation/utilities/polylinealgorithm)
 	****  - the polyline has to contain at least 2 coordinates and at the most 200 coordinates
 	****  name (Optional): the name of the route (String) NEEDS TO BE URLENCODED !!! (e.g. Your Route Name becomes Your%20Route%20Name)
-	****  routeMode (Optional): F for Fastest, S for Shortest, E for Efficient (Defaults to F)
+	****  routeMode (Optional): F for Fastest, S for Shortest, E for Efficient, C for Curvy (Defaults to F)
 	****  vehicleType (Optional): C for Car/Motorcycle, B for Bicycle, P for Pedestrian (Defaults to C)
 	**************************************************************-->
 	
-	<a href='https://scenicapp.space/Scenic/api/navigate/polyline?polyline=wxk~FvbgvOkEuaBj]m}Ajm@qnBp`Axv@bj@qaAxk@mjCjM{cB&name=Route%20From%20Web&routeMode=F&vehicleType=C'>Send route polyline to Scenic for Navigation (with GET request)</a>
+	<a href='https://scenicapp.space/Scenic/api/navigate/polyline?polyline=wxk~FvbgvOkEuaBj]m}Ajm@qnBp`Axv@bj@qaAxk@mjCjM{cB&name=RouteName&routeMode=F&vehicleType=C'>Send route polyline to Scenic for Navigation (with GET request)</a>
 	
     
     
@@ -80,11 +80,11 @@
 	****  - 6 digits precision for the lat and lon components is sufficient
 	****  - there should be at least 2 coordinates and at the most 200 coordinates
 	****  name: the name of the route (String) NEEDS TO BE URLENCODED !!! (e.g. Your Route Name becomes Your%20Route%20Name)
-	****  routeMode (Optional): F for Fastest, S for Shortest, E for Efficient (Defaults to F)
+	****  routeMode (Optional): F for Fastest, S for Shortest, E for Efficient, C for Curvy (Defaults to F)
 	****  vehicleType (Optional): C for Car/Motorcycle, B for Bicycle, P for Pedestrian (Defaults to C)
 	**************************************************************-->
 	
-	<a href='https://scenicapp.space/Scenic/api/navigate/coordinates?coordinates=28.5020112345,77.0853534524|28.5021994638,77.0848774538|28.5026335458,77.0850589642|28.5029786472,77.085397485&name=Route%20From%20Web&routeMode=F&vehicleType=C'>Send route coordinates to Scenic for Navigation (with GET request)</a>
+	<a href='https://scenicapp.space/Scenic/api/navigate/coordinates?coordinates=28.5020112345,77.0853534524|28.5021994638,77.0848774538|28.5026335458,77.0850589642|28.5029786472,77.085397485&name=RouteName&routeMode=F&vehicleType=C'>Send route coordinates to Scenic for Navigation (with GET request)</a>
 	
 	
 	<br><br>
@@ -96,7 +96,7 @@
 	****  name: the name of the location (String) NEEDS TO BE URLENCODED !!! (e.g. Your Location Name becomes Your%20Location%20Name)
 	**************************************************************-->
 	
-	<a href='https://scenicapp.space/Scenic/api/navigate/coordinate?coordinate=19.415,-99.098377&name=Location%20From%20Web'>Send location coordinate to Scenic for Navigation (with GET request)</a>
+	<a href='https://scenicapp.space/Scenic/api/navigate/coordinate?coordinate=19.415,-99.098377&name=LocationName'>Send location coordinate to Scenic for Navigation (with GET request)</a>
 
 	
 	

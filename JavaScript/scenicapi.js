@@ -94,7 +94,7 @@ function sendToScenicForImport_coordinates(coordinates, name = "", descr = "", s
 ****  polyline (required): Encoded Polyline (String) (https://developers.google.com/maps/documentation/utilities/polylinealgorithm)
 ****  the polyline has to contain at least 2 coordinates and at the most 200 coordinates
 ****  name (Optional): the name of the route (String)
-****  routeMode (Optional): F for Fastest, S for Shortest, E for Efficient (Defaults to F)
+****  routeMode (Optional): F for Fastest, S for Shortest, E for Efficient, C for Curvy (Defaults to F)
 ****  vehicleType (Optional): C for Car/Motorcycle, B for Bicycle, P for Pedestrian (Defaults to C)
 **************************************************************/
 function sendToScenicForNavigation_polyline(polyline, name = "", routeMode = "F", vehicleType = "C") {
@@ -115,7 +115,7 @@ function sendToScenicForNavigation_polyline(polyline, name = "", routeMode = "F"
 ****  - 6 digits precision for the lat and lon components is sufficient
 ****  - there should be at least 2 coordinate and at the most 200 coordinates
 ****  name (Optional): the name of the route (String)
-****  routeMode (Optional): F for Fastest, S for Shortest, E for Efficient (Defaults to F)
+****  routeMode (Optional): F for Fastest, S for Shortest, E for Efficient, C for Curvy (Defaults to F)
 ****  vehicleType (Optional): C for Car/Motorcycle, B for Bicycle, P for Pedestrian (Defaults to C)
 **************************************************************/
 function sendToScenicForNavigation_coordinates(coordinates, name = "", routeMode = "F", vehicleType = "C") {

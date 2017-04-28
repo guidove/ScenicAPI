@@ -4,9 +4,9 @@ Scenic Integration is for iOS apps and Websites that offer routes. By adding lin
 - **Navigate** your routes (or to your locations) with Scenic
 - **Import** your routes to their Scenic account
 
-Scenic is a (Motorcycle) Navigation App for iOS (iPhone/iPad/iPodTouch). With Scenic users can plan, navigate and track their (Motorcycle) Trips. For more information see [MotoMappers.com](http://www.motomappers.com) and [Scenic on the App Store](https://itunes.apple.com/us/app/scenic-tour-planner-navigation/id1089668246)
+Scenic is a (Motorcycle) Navigation App for iOS. With Scenic users can plan, navigate and track their (Motorcycle) Trips. For more information see [MotoMappers.com](http://www.motomappers.com) and [Scenic on the App Store](https://itunes.apple.com/app/id1089668246)
 
-By integrating with Scenic you not only offer more functionality to your existing users, but also **open up an additional channel to acquire new users**. (i.e. Scenic users will notice the integration and possibly sign up to your site / get your app.)
+By integrating with Scenic you not only offer more functionality to your existing users, but also **open up an additional channel to acquire new users**. (i.e. Scenic users will notice the integration with your site/app.)
 
 # Ways to Integrate
 
