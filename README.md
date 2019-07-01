@@ -1,10 +1,13 @@
+Scenic is a the number 1 Motorcycle Navigation App on iOS. With Scenic users can plan, navigate and track their rides. For more information see [MotoMappers.com](http://www.motomappers.com) and [Scenic on the App Store](https://itunes.apple.com/app/id1089668246)
+
 # Scenic-Integration
-Scenic Integration is for iOS apps and Websites that offer routes. By adding links/buttons to your app/website you can offer your users the ability to:
+By adding links/buttons to your app and/or website you can offer your users the ability to:
 
-- **Navigate** your routes (or to your locations) with Scenic
-- **Import** your routes to their Scenic account
+- **Navigate** navigate to your locations with Scenic
+- **Navigate** navigate your routes with Scenic
+- **Import** send routes from your site to their Scenic account
 
-Scenic is a (Motorcycle) Navigation App for iOS. With Scenic users can plan, navigate and track their (Motorcycle) Trips. For more information see [MotoMappers.com](http://www.motomappers.com) and [Scenic on the App Store](https://itunes.apple.com/app/id1089668246)
+
 
 By integrating with Scenic you not only offer more functionality to your existing users, but also **open up an additional channel to acquire new users**. (i.e. Scenic users will notice the integration with your site/app.)
 
