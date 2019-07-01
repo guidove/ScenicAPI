@@ -1,26 +1,26 @@
-Scenic is a the number 1 Motorcycle Navigation App on iOS. With Scenic users can plan, navigate and track their rides. For more information see [MotoMappers.com](http://www.motomappers.com) and [Scenic on the App Store](https://itunes.apple.com/app/id1089668246)
+Scenic is a the number 1 Motorcycle Navigation App on iOS. For more information see [MotoMappers.com](http://www.motomappers.com) and [Scenic on the App Store](https://itunes.apple.com/app/id1089668246)
 
 # Scenic-Integration
-By adding links/buttons to your app and/or website you can offer your users the ability to:
+By adding links to your app and website your users will be able to:
 
-- **Navigate** navigate to your locations with Scenic
-- **Navigate** navigate your routes with Scenic
+- **Navigate** to locations with Scenic
+- **Navigate** routes with Scenic
 - **Import** send routes from your site to their Scenic account
 
+By simply tapping/clicking a link or button, Scenic will open automatically and navigation or import will start. It works even if the user is on a desktop. In that case the Scenic WebApp will open and user can add the location/route to his/her account from there.
 
-
-By integrating with Scenic you not only offer more functionality to your existing users, but also **open up an additional channel to acquire new users**. (i.e. Scenic users will notice the integration with your site/app.)
+By integrating with Scenic you not only offer more functionality to your existing users, but also **open up an additional channel to acquire new users**. (i.e. We will promote the link via our newsletter and social channels. Options for custom integration are also available)
 
 # Ways to Integrate
 
 ## 'Navigate with Scenic' links on your website / in your app
-They send a route or location to Scenic to **navigate** it:
+Send a route or location to Scenic to **navigate** it:
 
 - When a user clicks a 'navigate' link/button on your website/app Scenic will open with the location/route ready to be navigated.
 - There is a link to send a location (single coordinate) and there are links to send routes with upto 200 coordinates.
 - When sending a single location the user will be navigated from his/her current position to that location
 - When sending a route the user will be navigated along the send coordinates, optionally including navigation from his/her current position to the first coordinate.
-- After the user taps 'Start Trip' the navigation begins.
+- After the user taps 'Start' the navigation begins.
 - Navigation links do NOT add a route to the users' account. After navigation finishes the route is 'gone'.
 
 ## 'Import in Scenic' links on your website / in your app
