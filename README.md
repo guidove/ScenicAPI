@@ -1,4 +1,4 @@
-Scenic is a the number 1 Motorcycle Navigation App on iOS. For more information see [MotoMappers.com](http://www.motomappers.com) and [Scenic on the App Store](https://itunes.apple.com/app/id1089668246)
+Scenic is the number 1 Motorcycle Navigation App on iOS. For more information see [MotoMappers.com](http://www.motomappers.com) and [Scenic on the App Store](https://itunes.apple.com/app/id1089668246)
 
 # Scenic-Integration
 By adding links to your app and website your users will be able to:
