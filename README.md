@@ -150,6 +150,9 @@ If I send a gpxurl for import, will that url need to be reachable forever? | No,
 App Store App opens while Scenic is installed? | This is a bug ([or feature?](http://stackoverflow.com/questions/34607023/branch-io-disable-right-arrow-button-bnc-lt-on-statusbar)) in the Apple Universal links.<br>- When Scenic opens through a universal link the status bar will display the domain of that universal link in the top right of the status bar. In scenic's case `scenicapp.space`.<br>- If a user taps on that, the iOS device thinks that from now on ALL universal links for this app should NOT open the App anymore, but in stead go to `scenicapp.space`, which, for Scenic, results in the App Store Scenic page opening.<br>-To resolve this, email the following link to your user `https://scenicapp.space/api/openScenic.php` and tell the user to open the email on his iPhone and 'tap and hold' on this link. An action sheet will appear where the user should choose 'Open in Scenic'. From then on all links will open in Scenic again.
 
 
+
+
+# IMPORTANT NOTE
 > *Both the Import and the Navigate links are based on iOS Universal Links, but they have been customised. While regular universal links only open Scenic if tapped/clicked from an iOS app or from an iOS browser, the Scenic links wil redirect the user to the Scenic WebApp if browsing on a desktop.*
 >
 > - *If the user is browsing on an iOS device or using your iOS App, and Scenic is installed, Scenic will automatically open upon clicking the link/button. If Scenic is not installed the App Store App will open on the Scenic page.*
