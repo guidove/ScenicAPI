@@ -155,5 +155,5 @@ App Store App opens while Scenic is installed? | This is a bug ([or feature?](ht
 > - *If the user is browsing on an iOS device or using your iOS App, and Scenic is installed, Scenic will automatically open upon clicking the link/button. If Scenic is not installed the App Store App will open on the Scenic page.*
 > - *If the user is not browsing on an iOS device, for import links, the user is directed to the Scenic WebApp, upon where he/she can enter their Scenic credentials. The route/location is then added to their Scenic account and upon opening Scenic on their device he/she will be notified that a route/location is ready to be imported.*
 >
-> Because of this behaviour the customised universal links **don't work offline**. For the 'Navigate' links, [Direct Universal Links](directUniLinksForNavigation.md) are also available. They do work offline, but they don't redirect the user to the Scenic WebApp if browsing on a non-ios device. In stead they will open the App Store Scenic page.
+> Because of this behaviour the customised universal links **don't work offline**. For the 'Navigate' links, [Direct Universal Links](directUniLinksForNavigation.md) are also available. They do work offline.
 
