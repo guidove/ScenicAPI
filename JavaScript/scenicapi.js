@@ -13,6 +13,14 @@ function stringOfCoordinatesArray(coordinates) {
     return str.substr(0, str.length -1);
 }
 
+function stringOfStringArray(strings) {
+	var str = "";
+	strings.forEach(function(strng){
+		str += strng.replace("|", "") + "|";
+	})
+	return str.substr(0, str.length -1);
+}
+
 function post(path, params) {
     var form = document.createElement("form");
     form.setAttribute("method", "post");
@@ -56,14 +64,18 @@ function sendToScenicForImport_gpxurl(gpxurl, source = "") {
 *****               Send Polyline for IMPORT          *********
 ***************************************************************
 ****  polyline (required): Encoded Polyline (String) (https://developers.google.com/maps/documentation/utilities/polylinealgorithm)
-****  name: (optional) the name of the route (String)
+****  waypointKinds: (optional): An array of strings, where the strings represent the waypointKind, which is either "via" or "stop". The array should contain the same amount of elements as there are coordinates. A via is a shaping point to force the route along that point. User is not alerted when reaching a via and vias can be ignored upon recalculation. A stop is a special kind of via. User will get alerts when nearing a via point and stops are not ignored upon recalculation. Route begin and end point are stops. E.g. var waypointKinds = ["stop","via","via","via","stop","via","stop"]
+****  waypointNames: (optional): An array of strings, where the strings represent the waypointName. The number of names needs to match the number of coordinates. P.S. If a waypoint does not have a name an empty string should be included. If a name has a pipe character it will be removed from the name. E.g. var waypointNames = ["Route start","","","","Lunch Place","","Route endpoint"]
+****  name: (optional): the route name (String)
 ****  descr (optional): the description of the route (String)
 ****  source (optional): the name of your website or service (String)
 **************************************************************/
-function sendToScenicForImport_polyline(polyline, name = "", descr = "", source = "") {
+function sendToScenicForImport_polyline(polyline, waypointKinds = [], waypointNames = [], name = "", descr = "", source = "") {
 	var params = [];
 	params["source"] = source;
 	params["polyline"] = polyline;
+	params["waypointKinds"] = stringOfStringArray(waypointKinds);
+	params["waypointNames"] = stringOfStringArray(waypointNames);
 	params["name"] = name;
 	params["descr"] = descr;
 	post("https://scenicapp.space/api/import/polyline", params);
@@ -74,14 +86,19 @@ function sendToScenicForImport_polyline(polyline, name = "", descr = "", source 
 ************       Send Coordinates for IMPORT      **********
 **************************************************************
 ****  coordinates (required): Array of coordinates (Array of arrays with lat as element 0 and lon as element 1) E.g. coordinates[0][0] = 32.123456; coordinates[0][1] = 17.654321;
+****  polyline (required): Encoded Polyline (String) (https://developers.google.com/maps/documentation/utilities/polylinealgorithm)
+****  waypointKinds: (optional): An array of strings, where the strings represent the waypointKind, which is either "via" or "stop". The array should contain the same amount of elements as there are coordinates. A via is a shaping point to force the route along that point. User is not alerted when reaching a via and vias can be ignored upon recalculation. A stop is a special kind of via. User will get alerts when nearing a via point and stops are not ignored upon recalculation. Route begin and end point are stops. E.g. var waypointKinds = ["stop","via","via","via","stop","via","stop"]
+****  waypointNames: (optional): An array of strings, where the strings represent the waypointName. The number of names needs to match the number of coordinates. P.S. If a waypoint does not have a name an empty string should be included. If a name has a pipe character it will be removed from the name. E.g. var waypointNames = ["Route start","","","","Lunch Place","","Route endpoint"]
 ****  name (optional): the name of the route (String)
 ****  descr (optional): the description of the route (String)
 ****  source (optional): the name of your website or service (String)
 **************************************************************/
-function sendToScenicForImport_coordinates(coordinates, name = "", descr = "", source = "") {
+function sendToScenicForImport_coordinates(coordinates, waypointKinds = [], waypointNames = [], name = "", descr = "", source = "") {
 	var params = [];
 	params["source"] = source;
 	params["coordinates"] = stringOfCoordinatesArray(coordinates);
+	params["waypointKinds"] = stringOfStringArray(waypointKinds);
+	params["waypointNames"] = stringOfStringArray(waypointNames);
 	params["name"] = name;
 	params["descr"] = descr;
 	post("https://scenicapp.space/api/import/coordinates", params);

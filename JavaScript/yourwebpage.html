@@ -1,16 +1,21 @@
 <html>
 	<head>
 		<script src='scenicapi.js'></script>
-			<script>
-		var coordinates = 
-			[
-				[28.5020112345,77.0853534524],
-				[28.5021994638,77.0848774538],
-				[28.5026335458,77.0850589642],
-				[28.5029786472,77.085397485]
-			];
-		var coordinate = [19.415,-99.098377];
-	</script>
+		
+		<script>
+			var coordinates = 
+				[
+					[28.5020112345,77.0853534524],
+					[28.5021994638,77.0848774538],
+					[28.5026335458,77.0850589642],
+					[28.5029786472,77.085397485]
+				];
+			var coordinate = [19.415,-99.098377];
+			
+			var waypointKinds = ["stop","via","stop","stop"];
+			var waypointNames = ["Route start","","Lunch Place","Route Endpoint"];
+				
+		</script>
 
 	</head>
 	
@@ -20,9 +25,9 @@
 	<br><br>
 	<a href='javascript:void(0);' onclick='sendToScenicForImport_gpxurl("http://www.motomappers.com/Accentrix.GPX", "YourWebsiteName JS");'>Send gpxURL to Scenic for IMPORT</a>
 	<br><br>
-	<a href='javascript:void(0);' onclick='sendToScenicForImport_polyline("wxk~FvbgvOkEuaBj]m}Ajm@qnBp`Axv@bj@qaAxk@mjCjM{cB", "Polyline Name JS", "Polyline Description JS", "YourWebsiteName JS");'>Send route polyline to Scenic for IMPORT</a>
+	<a href='javascript:void(0);' onclick='sendToScenicForImport_polyline("wxk~FvbgvOkEuaBj]m}Ajm@qnBp`Axv@bj@qaAxk@mjCjM{cB", waypointKinds, waypointNames, "Polyline Name JS", "Polyline Description JS", "YourWebsiteName JS");'>Send route polyline to Scenic for IMPORT</a>
 	<br><br>
-	<a href='javascript:void(0);' onclick='sendToScenicForImport_coordinates(coordinates, "Coordinates Name JS", "Coordinates Description JS", "YourWebsiteName JS");'>Send route coordinates to Scenic for IMPORT</a>
+	<a href='javascript:void(0);' onclick='sendToScenicForImport_coordinates(coordinates, waypointKinds, waypointNames, "Coordinates Name JS", "Coordinates Description JS", "YourWebsiteName JS");'>Send route coordinates to Scenic for IMPORT</a>
 	<br><br>
 	
 	

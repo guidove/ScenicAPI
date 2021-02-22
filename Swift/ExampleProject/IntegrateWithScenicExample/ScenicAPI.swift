@@ -47,15 +47,17 @@ class ScenicAPI {
     /**************************************************************
      *****               Send Polyline for IMPORT          *********
     ***************************************************************
-    ****  polyline (required): Encoded Polyline (String) (https://developers.google.com/maps/documentation/utilities/polylinealgorithm)
+    *****  polyline (required): Encoded Polyline (String) (https://developers.google.com/maps/documentation/utilities/polylinealgorithm)
+    ***** waypointKinds: (optional): An array of WaypointKind enum, with cases "via" or "stop". The array should contain the same amount of elements as there are coordinates. A via is a shaping point to force the route along that point. User is not alerted when reaching a via and vias can be ignored upon recalculation. A stop is a special kind of via. User will get alerts when nearing a via point and stops are not ignored upon recalculation. Route begin and end point are stops. E.g. let waypointKinds = [.stop, .via, .via, .via, .stop, .via, .stop]
+    ***** waypointNames: (optional): An array of strings, where the strings represent the waypointName. The number of names needs to match the number of coordinates. P.S. If a waypoint does not have a name an empty string should be included. If a name has a pipe character it will be removed from the name. E.g. let waypointNames = ["Route start","","","","Lunch Place","","Route endpoint"]
     ****  name (optional): the name of the route (String)
     ****  descr (optional): the description of the route (String)
     **************************************************************/
     
-    func sendToScenicForImport(polyline: String, name: String = "", descr: String = "") {
+    func sendToScenicForImport(polyline: String, waypointKinds: [WaypointKind] = [WaypointKind](), waypointNames: [String] = [String](), name: String = "", descr: String = "") {
         if let encodedname = name.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed),
            let encodeddescr = descr.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) {
-            let param = "polyline=\(polyline)&name=\(encodedname)&descr=\(encodeddescr)"
+            let param = "polyline=\(polyline)&waypointKinds=\(stringOfWaypointKinds(waypointKinds))&waypointNames=\(stringOfStringsArray(waypointNames))&name=\(encodedname)&descr=\(encodeddescr)"
             self.getCopiedGPXURL("import/polyline", parameters: param) { (error, url) -> Void in
                 if !error {
                     self.sendGPXURL(url!)
@@ -75,14 +77,16 @@ class ScenicAPI {
      ************       Send Coordinates for IMPORT      **********
      **************************************************************
      ****  coordinates (required): Array of coordinates (latitude,longitude) (Array<CLLocationCoordinate2D>)
+     ***** waypointKinds: (optional): An array of WaypointKind enum, with cases "via" or "stop". The array should contain the same amount of elements as there are coordinates. A via is a shaping point to force the route along that point. User is not alerted when reaching a via and vias can be ignored upon recalculation. A stop is a special kind of via. User will get alerts when nearing a via point and stops are not ignored upon recalculation. Route begin and end point are stops. E.g. let waypointKinds = [.stop, .via, .via, .via, .stop, .via, .stop]
+     ***** waypointNames: (optional): An array of strings, where the strings represent the waypointName. The number of names needs to match the number of coordinates. P.S. If a waypoint does not have a name an empty string should be included. If a name has a pipe character it will be removed from the name. E.g. let waypointNames = ["Route start","","","","Lunch Place","","Route endpoint"]
      ****  name (optional): the name of the route (String)
      ****  descr (optional): the description of the route (String)
      **************************************************************/
     
-    func sendToScenicForImport(coordinates: Array<CLLocationCoordinate2D>, name: String = "", descr: String = "") {
+    func sendToScenicForImport(coordinates: Array<CLLocationCoordinate2D>, waypointKinds: [WaypointKind] = [WaypointKind](), waypointNames: [String] = [String](), name: String = "", descr: String = "") {
         if let encodedname = name.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed),
             let encodeddescr = descr.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) {
-            let param = "coordinates=\(stringOfCLLocationArray(coordinates))&name=\(encodedname)&descr=\(encodeddescr)"
+            let param = "coordinates=\(stringOfCLLocationArray(coordinates))&waypointKinds=\(stringOfWaypointKinds(waypointKinds))&waypointNames=\(stringOfStringsArray(waypointNames))&name=\(encodedname)&descr=\(encodeddescr)"
             self.getCopiedGPXURL("import/coordinates", parameters: param) { (error, url) -> Void in
                 if !error {
                     self.sendGPXURL(url!)
@@ -165,7 +169,23 @@ class ScenicAPI {
         for location in cllArray {
             str += "\(location.latitude.toNonScientificString()),\(location.longitude.toNonScientificString())|"
         }
-        return String(str.characters.dropLast())
+        return String(str.dropLast())
+    }
+    
+    fileprivate func stringOfStringsArray(_ stringArray: [String]) -> String {
+        var str = ""
+        for strng in stringArray {
+            str += strng.replacingOccurrences(of: "|", with: "") + "|"
+        }
+        return String(str.dropLast())
+    }
+    
+    fileprivate func stringOfWaypointKinds(_ wpkArray: [WaypointKind]) -> String {
+        var str = ""
+        for wpk in wpkArray {
+            str += wpk.rawValue + "|"
+        }
+        return String(str.dropLast())
     }
     
     fileprivate func sendGPXURL(_ gpxurl: String) {
@@ -268,8 +288,8 @@ class ScenicAPI {
                 }
             }
         }
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         if let rootVC = UIApplication.shared.keyWindow?.rootViewController {
             if let presentingVC = rootVC.presentingViewController {
                 presentFromController(presentingVC, animated: true, completion: nil)
@@ -288,31 +308,31 @@ fileprivate extension Double {
 }
 
 
-public struct Polyline {
+struct Polyline {
     
     /// The array of coordinates (nil if polyline cannot be decoded)
-    public let coordinates: [CLLocationCoordinate2D]?
+    let coordinates: [CLLocationCoordinate2D]?
     /// The encoded polyline
-    public let encodedPolyline: String
+    let encodedPolyline: String
     
     /// The array of levels (nil if cannot be decoded, or is not provided)
-    public let levels: [UInt32]?
+    let levels: [UInt32]?
     /// The encoded levels (nil if cannot be encoded, or is not provided)
-    public let encodedLevels: String?
+    let encodedLevels: String?
     
     /// The array of location (computed from coordinates)
-    public var locations: [CLLocation]? {
+    var locations: [CLLocation]? {
         return self.coordinates.map(toLocations)
     }
     
-    // MARK: - Public Methods -
+    // MARK: - Methods -
     
     /// This designated initializer encodes a `[CLLocationCoordinate2D]`
     ///
     /// - parameter coordinates: The `Array` of `CLLocationCoordinate2D` that you want to encode
     /// - parameter levels: The optional `Array` of levels  that you want to encode (default: `nil`)
-    /// - parameter precision: The precision used for encoding (default: `1e5`)
-    public init(coordinates: [CLLocationCoordinate2D], levels: [UInt32]? = nil, precision: Double = 1e5) {
+    /// - parameter precision: The precision used for encoding (default: `1e6`)
+    init(coordinates: [CLLocationCoordinate2D], levels: [UInt32]? = nil, precision: Double = 1e6) {
         
         self.coordinates = coordinates
         self.levels = levels
@@ -326,14 +346,14 @@ public struct Polyline {
     ///
     /// - parameter encodedPolyline: The polyline that you want to decode
     /// - parameter encodedLevels: The levels that you want to decode (default: `nil`)
-    /// - parameter precision: The precision used for decoding (default: `1e5`)
-    public init(encodedPolyline: String, encodedLevels: String? = nil, precision: Double = 1e5) {
+    /// - parameter precision: The precision used for decoding (default: `1e6`)
+    init(encodedPolyline: String, encodedLevels: String? = nil, precision: Double = 1e6) {
         
         self.encodedPolyline = encodedPolyline
         self.encodedLevels = encodedLevels
         
         coordinates = decodePolyline(encodedPolyline, precision: precision)
-        
+
         levels = self.encodedLevels.flatMap(decodeLevels)
     }
     
@@ -341,23 +361,23 @@ public struct Polyline {
     ///
     /// - parameter locations: The `Array` of `CLLocation` that you want to encode
     /// - parameter levels: The optional array of levels  that you want to encode (default: `nil`)
-    /// - parameter precision: The precision used for encoding (default: `1e5`)
-    public init(locations: [CLLocation], levels: [UInt32]? = nil, precision: Double = 1e5) {
+    /// - parameter precision: The precision used for encoding (default: `1e6`)
+    init(locations: [CLLocation], levels: [UInt32]? = nil, precision: Double = 1e6) {
         
         let coordinates = toCoordinates(locations)
         self.init(coordinates: coordinates, levels: levels, precision:precision)
     }
 }
 
-// MARK: - Public Functions -
+// MARK: - Functions -
 
 /// This function encodes an `[CLLocationCoordinate2D]` to a `String`
 ///
 /// - parameter coordinates: The `Array` of `CLLocationCoordinate2D` that you want to encode
-/// - parameter precision: The precision used to encode coordinates (default: `1e5`)
+/// - parameter precision: The precision used to encode coordinates (default: `1e6`)
 ///
 /// - returns: A `String` representing the encoded Polyline
-public func encodeCoordinates(_ coordinates: [CLLocationCoordinate2D], precision: Double = 1e5) -> String {
+private func encodeCoordinates(_ coordinates: [CLLocationCoordinate2D], precision: Double = 1e6) -> String {
     
     var previousCoordinate = IntegerCoordinates(0, 0)
     var encodedPolyline = ""
@@ -379,10 +399,10 @@ public func encodeCoordinates(_ coordinates: [CLLocationCoordinate2D], precision
 /// This function encodes an `[CLLocation]` to a `String`
 ///
 /// - parameter coordinates: The `Array` of `CLLocation` that you want to encode
-/// - parameter precision: The precision used to encode locations (default: `1e5`)
+/// - parameter precision: The precision used to encode locations (default: `1e6`)
 ///
 /// - returns: A `String` representing the encoded Polyline
-public func encodeLocations(_ locations: [CLLocation], precision: Double = 1e5) -> String {
+private func encodeLocations(_ locations: [CLLocation], precision: Double = 1e6) -> String {
     
     return encodeCoordinates(toCoordinates(locations), precision: precision)
 }
@@ -392,7 +412,7 @@ public func encodeLocations(_ locations: [CLLocation], precision: Double = 1e5) 
 /// - parameter levels: The `Array` of `UInt32` levels that you want to encode
 ///
 /// - returns: A `String` representing the encoded Levels
-public func encodeLevels(_ levels: [UInt32]) -> String {
+private func encodeLevels(_ levels: [UInt32]) -> String {
     return levels.reduce("") {
         $0 + encodeLevel($1)
     }
@@ -401,14 +421,14 @@ public func encodeLevels(_ levels: [UInt32]) -> String {
 /// This function decodes a `String` to a `[CLLocationCoordinate2D]?`
 ///
 /// - parameter encodedPolyline: `String` representing the encoded Polyline
-/// - parameter precision: The precision used to decode coordinates (default: `1e5`)
+/// - parameter precision: The precision used to decode coordinates (default: `1e6`)
 ///
 /// - returns: A `[CLLocationCoordinate2D]` representing the decoded polyline if valid, `nil` otherwise
-public func decodePolyline(_ encodedPolyline: String, precision: Double = 1e5) -> [CLLocationCoordinate2D]? {
+private func decodePolyline(_ encodedPolyline: String, precision: Double = 1e6) -> [CLLocationCoordinate2D]? {
     
     let data = encodedPolyline.data(using: String.Encoding.utf8)!
     
-    let byteArray = unsafeBitCast((data as NSData).bytes, to: UnsafePointer<Int8>.self)
+    let byteArray = (data as NSData).bytes.assumingMemoryBound(to: Int8.self)
     let length = Int(data.count)
     var position = Int(0)
     
@@ -418,7 +438,7 @@ public func decodePolyline(_ encodedPolyline: String, precision: Double = 1e5) -
     var lon = 0.0
     
     while position < length {
-        
+      
         do {
             let resultingLat = try decodeSingleCoordinate(byteArray: byteArray, length: length, position: &position, precision: precision)
             lat += resultingLat
@@ -428,7 +448,7 @@ public func decodePolyline(_ encodedPolyline: String, precision: Double = 1e5) -
         } catch {
             return nil
         }
-        
+
         decodedCoordinates.append(CLLocationCoordinate2D(latitude: lat, longitude: lon))
     }
     
@@ -438,10 +458,10 @@ public func decodePolyline(_ encodedPolyline: String, precision: Double = 1e5) -
 /// This function decodes a String to a [CLLocation]?
 ///
 /// - parameter encodedPolyline: String representing the encoded Polyline
-/// - parameter precision: The precision used to decode locations (default: 1e5)
+/// - parameter precision: The precision used to decode locations (default: 1e6)
 ///
 /// - returns: A [CLLocation] representing the decoded polyline if valid, nil otherwise
-public func decodePolyline(_ encodedPolyline: String, precision: Double = 1e5) -> [CLLocation]? {
+private func decodePolyline(_ encodedPolyline: String, precision: Double = 1e6) -> [CLLocation]? {
     
     return decodePolyline(encodedPolyline, precision: precision).map(toLocations)
 }
@@ -451,7 +471,7 @@ public func decodePolyline(_ encodedPolyline: String, precision: Double = 1e5) -
 /// - parameter encodedLevels: The `String` representing the levels to decode
 ///
 /// - returns: A `[UInt32]` representing the decoded Levels if the `String` is valid, `nil` otherwise
-public func decodeLevels(_ encodedLevels: String) -> [UInt32]? {
+private func decodeLevels(_ encodedLevels: String) -> [UInt32]? {
     var remainingLevels = encodedLevels.unicodeScalars
     var decodedLevels   = [UInt32]()
     
@@ -516,7 +536,7 @@ private func encodeFiveBitComponents(_ value: Int) -> String {
         }
         
         fiveBitComponent += 63
-        
+
         let char = UnicodeScalar(fiveBitComponent)!
         returnString.append(String(char))
         remainingComponents = remainingComponents >> 5
@@ -529,7 +549,7 @@ private func encodeFiveBitComponents(_ value: Int) -> String {
 
 // We use a byte array (UnsafePointer<Int8>) here for performance reasons. Check with swift 2 if we can
 // go back to using [Int8]
-private func decodeSingleCoordinate(byteArray: UnsafePointer<Int8>, length: Int, position: inout Int, precision: Double = 1e5) throws -> Double {
+private func decodeSingleCoordinate(byteArray: UnsafePointer<Int8>, length: Int, position: inout Int, precision: Double = 1e6) throws -> Double {
     
     guard position < length else { throw PolylineError.singleCoordinateDecodingError }
     
@@ -571,7 +591,7 @@ private func extractNextChunk(_ encodedString: inout String.UnicodeScalarView) t
         let currentCharacterValue = Int32(encodedString[currentIndex].value)
         if isSeparator(currentCharacterValue) {
             let extractedScalars = encodedString[encodedString.startIndex...currentIndex]
-            encodedString = encodedString[encodedString.index(after: currentIndex)..<encodedString.endIndex]
+            encodedString = String.UnicodeScalarView(encodedString[currentIndex...])
             
             return String(extractedScalars)
         }
@@ -616,7 +636,7 @@ private func toCoordinates(_ locations: [CLLocation]) -> [CLLocationCoordinate2D
 
 private func toLocations(_ coordinates: [CLLocationCoordinate2D]) -> [CLLocation] {
     return coordinates.map { coordinate in
-        CLLocation(latitude:coordinate.latitude, longitude:coordinate.longitude)
+        coordinate.clLocation
     }
 }
 
@@ -625,6 +645,34 @@ private func isSeparator(_ value: Int32) -> Bool {
 }
 
 private typealias IntegerCoordinates = (latitude: Int, longitude: Int)
+
+extension Array where Element == CLLocationCoordinate2D {
+    var polyline: String {
+        get {
+            return Polyline(coordinates: self).encodedPolyline
+        }
+    }
+    
+    var polyline5digitPrecission: String {
+        get {
+            return Polyline(coordinates: self, levels: nil, precision: 1e5).encodedPolyline
+        }
+    }
+}
+
+extension String {
+    var coordinatesFromPolyline: [CLLocationCoordinate2D]? {
+        get {
+            return Polyline(encodedPolyline: self).coordinates
+        }
+    }
+    
+    var coordinatesFromPolyline5digitPrecission: [CLLocationCoordinate2D]? {
+        get {
+            return Polyline(encodedPolyline: self, encodedLevels: nil, precision: 1e5).coordinates
+        }
+    }
+}
 
 public enum RouteMode: String {
     case fast = "F"
@@ -636,4 +684,17 @@ public enum VehicleType: String {
     case carMotorcycle = "C"
     case bicycle = "B"
     case pedestrian = "P"
+}
+
+public enum WaypointKind: String {
+    case via = "via"
+    case stop = "stop"
+}
+
+extension CLLocationCoordinate2D {
+    
+    var clLocation: CLLocation {
+        return CLLocation(latitude: self.latitude, longitude: self.longitude)
+    }
+
 }

@@ -45,8 +45,20 @@
 			$polyline = 'wxk~FvbgvOkEuaBj]m}Ajm@qnBp`Axv@bj@qaAxk@mjCjM{cB';
 			$name = 'Polyline Name PHP';
 			$description = 'Polyline Description PHP';
+			$waypointKinds = array(
+				"stop",
+				"via",
+				"stop",
+				"stop"
+			);
+			$waypointNames = array(
+				"Route start",
+				"",
+				"Lunch Place",
+				"Route Endpoint"
+			);
 			
-			sendToScenicForImport_polyline($polyline, $name, $description, "YourWebsiteName PHP");
+			sendToScenicForImport_polyline($polyline, $waypointKinds, $waypoingNames, $name, $description, "YourWebsiteName PHP");
 		}
 		else if ($id == 3) {
 		
@@ -62,8 +74,20 @@
 				);
 			$name = 'Coordinates Name PHP';
 			$description = 'Coordinates Description PHP';
+			$waypointKinds = array(
+				"stop",
+				"via",
+				"stop",
+				"stop"
+			);
+			$waypointNames = array(
+				"Route start",
+				"",
+				"Lunch Place",
+				"Route Endpoint"
+			);
 			
-			sendToScenicForImport_coordinates($coordinates, $name, $description, "YourWebsiteName PHP");
+			sendToScenicForImport_coordinates($coordinates, $waypointKinds, $waypoingNames, $name, $description, "YourWebsiteName PHP");
 		}
 		else if ($id == 4) {
 			

@@ -4,7 +4,7 @@ Scenic Integration is for iOS apps and Websites that offer routes. By adding lin
 - **Navigate** your routes (or to your locations) with Scenic
 - **Import** your routes to their Scenic account
 
-Scenic is a (Motorcycle) Navigation App for iOS. With Scenic users can plan, navigate and track their (Motorcycle) Trips. For more information see [MotoMappers.com](http://www.motomappers.com) and [Scenic on the App Store](https://itunes.apple.com/app/id1089668246)
+Scenic is a (Motorcycle) Navigation App for iOS. With Scenic users can plan, navigate and track their (Motorcycle) Trips. For more information see [ScenicApp.space](https://scenicapp.space) and [Scenic on the App Store](https://itunes.apple.com/app/id1089668246)
 
 By integrating with Scenic you not only offer more functionality to your existing users, but also **open up an additional channel to acquire new users**. (i.e. Scenic users will notice the integration with your site/app.)
 
@@ -88,8 +88,8 @@ The php library offers 6 functions:
 **to send a route for Import:**
 
 - `sendToScenicForImport_gpxurl($gpxurl, $source)`
-- `sendToScenicForImport_polyline($polyline, $name, $descr, $source)`
-- `sendToScenicForImport_coordinates($coordinates, $name, $descr, $source)`
+- `sendToScenicForImport_polyline($polyline, $waypointKinds, $waypointNames, $name, $descr, $source)`
+- `sendToScenicForImport_coordinates($coordinates, $waypointKinds, $waypointNames, $name, $descr, $source)`
 
 For more info and examples see the PHP folder of this repository.
 
@@ -114,8 +114,8 @@ The JavaScript library also offers 6 functions:
 **to send a route for Import:**
 
 - `sendToScenicForImport_gpxurl(gpxurl, source)`
-- `sendToScenicForImport_polyline(polyline, name, descr, source)`
-- `sendToScenicForImport_coordinates(coordinates, name, descr, source)`
+- `sendToScenicForImport_polyline(polyline, waypointKinds, waypointNames, name, descr, source)`
+- `sendToScenicForImport_coordinates(coordinates, waypointKinds, waypointNames, name, descr, source)`
 
 For more info and examples see the JavaScript folder of this repository.
 
@@ -140,8 +140,8 @@ Create an instance of the ScenicAPI class: `let scenic = ScenicAPI()` and use an
 **to send a route for Import:**
 
 - `scenic.sendToScenicForImport(gpxurl: String)`
-- `scenic.sendToScenicForImport(polyline: String, name: String, descr: String)`
-- `scenic.sendToScenicForImport(coordinates: Array<CLLocationCoordinate2D>, name: String, descr: String)`
+- `scenic.sendToScenicForImport(polyline: String, waypointKinds: Array<WaypointKind>, waypointNames: Array<String>, name: String, descr: String)`
+- `scenic.sendToScenicForImport(coordinates: Array<CLLocationCoordinate2D>, waypointKinds: Array<WaypointKind>, waypointNames: Array<String>, name: String, descr: String)`
 
 For more info and an example project see the Swift folder of this repository.
 
