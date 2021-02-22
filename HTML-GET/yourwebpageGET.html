@@ -26,6 +26,8 @@
 	*****               Send Polyline for IMPORT          *********
 	***************************************************************
 	****  polyline: Encoded Polyline (String) (https://developers.google.com/maps/documentation/utilities/polylinealgorithm)
+	****  waypointKinds: (optional): A string of waypoint kinds being either 'via' or 'stop', separated by the pipe character. The string should contain the same amount of kinds as there are coordinates. A via is a shaping point to force the route along that point. User is not alerted when reaching a via and vias can be ignored upon recalculation. A stop is a special kind of via. User will get alerts when nearing a via point and stops are not ignored upon recalculation. Route begin and end point are stops. E.g. "stop|via|via|via|stop|via|stop"
+	****  waypointNames: (optional): A string of waypoint names. The number of names needs to match the number of coordinates. If a waypoint does not have a name an empty string should be included. A name can not have a pipe character in it. E.g. "Route start||||Lunch Place||Route End"
 	****  name: the name of the route (String)
 	****  descr: the description of the route (String)
 	****  source: the name of your website or service (String)
@@ -33,7 +35,7 @@
 	****  !!! PARAMETERS NEED TO BE URLENCODED, except polyline !!!   (e.g. Your Source Name becomes Your%20Source%20Name)
 	**************************************************************-->
 	
-	<a href='https://scenicapp.space/Scenic/api/import/polyline?polyline=wxk~FvbgvOkEuaBj]m}Ajm@qnBp`Axv@bj@qaAxk@mjCjM{cB&name=RouteName&descr=RouteDescription&source=YourWebsiteName'>Send route polyline to Scenic for Import (with GET request)</a>
+	<a href='https://scenicapp.space/Scenic/api/import/polyline?polyline=wxk~FvbgvOkEuaBj]m}Ajm@qnBp`Axv@bj@qaAxk@mjCjM{cB&waypointKinds=stop|via|via|via|stop|via|stop&waypointNames=Route%20start||||Lunch%20Place||Route%20End&name=RouteName&descr=RouteDescription&source=YourWebsiteName'>Send route polyline to Scenic for Import (with GET request)</a>
 	
 	
     
@@ -43,6 +45,8 @@
 	**************************************************************
 	****  coordinates: String of coordinates in format lat1,lon1|lat2,lon2|lat3,lon3 (e.g. 28.502011,77.0853534524|28.5021994638,77.0848774538)
 	****  - 6 digits precision for the lat and lon components is sufficient
+	****  waypointKinds: (optional): A string of waypoint kinds being either 'via' or 'stop', separated by the pipe character. The string should contain the same amount of kinds as there are coordinates. A via is a shaping point to force the route along that point. User is not alerted when reaching a via and vias can be ignored upon recalculation. A stop is a special kind of via. User will get alerts when nearing a via point and stops are not ignored upon recalculation. Route begin and end point are stops. E.g. "stop|via|via|via|stop|via|stop"
+	****  waypointNames: (optional): A string of waypoint names. The number of names needs to match the number of coordinates. If a waypoint does not have a name an empty string should be included. A name can not have a pipe character in it. E.g. "Route start||||Lunch Place||Route End"
 	****  name: the name of the route (String)
 	****  descr: the description of the route (String)
 	****  source: the name of your website or service (String)
@@ -50,7 +54,7 @@
 	****  !!! PARAMETERS NEED TO BE URLENCODED, except coordinatees !!!   (e.g. Your Source Name becomes Your%20Source%20Name)
 	**************************************************************-->
 	
-	<a href='https://scenicapp.space/Scenic/api/import/coordinates?coordinates=28.5020112345,77.0853534524|28.5021994638,77.0848774538|28.5026335458,77.0850589642|28.5029786472,77.085397485&name=RouteName&descr=RouteDescription&source=YourWebsiteName'>Send route coordinates to Scenic for Import (with GET request)</a>
+	<a href='https://scenicapp.space/Scenic/api/import/coordinates?coordinates=28.5020112345,77.0853534524|28.5021994638,77.0848774538|28.5026335458,77.0850589642|28.5029786472,77.085397485&waypointKinds=stop|via|via|via|stop|via|stop&waypointNames=Route%20start||||Lunch%20Place||Route%20End&name=RouteName&descr=RouteDescription&source=YourWebsiteName'>Send route coordinates to Scenic for Import (with GET request)</a>
 	
 	
 	<br><br>

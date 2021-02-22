@@ -1,46 +1,42 @@
+Scenic is the number 1 Motorcycle Navigation App on iOS. For more information see [ScenicApp.space](https://scenicapp.space) and [Scenic on the App Store](https://itunes.apple.com/app/id1089668246)
+
 # Scenic-Integration
-Scenic Integration is for iOS apps and Websites that offer routes. By adding links/buttons to your app/website you can offer your users the ability to:
+By adding links to your app and website your users will be able to:
 
-- **Navigate** your routes (or to your locations) with Scenic
-- **Import** your routes to their Scenic account
+- **Navigate** to locations with Scenic
+- **Navigate** routes with Scenic
+- **Import** (send) routes from your site to their Scenic account
 
-Scenic is a (Motorcycle) Navigation App for iOS. With Scenic users can plan, navigate and track their (Motorcycle) Trips. For more information see [ScenicApp.space](https://scenicapp.space) and [Scenic on the App Store](https://itunes.apple.com/app/id1089668246)
+By simply tapping/clicking a link or button, Scenic will open automatically and navigation or import will start. You can include links/buttons in your app and on your website. Several libraries are available.
 
-By integrating with Scenic you not only offer more functionality to your existing users, but also **open up an additional channel to acquire new users**. (i.e. Scenic users will notice the integration with your site/app.)
+By integrating with Scenic you not only offer more functionality to your existing users, but also **open up an additional channel to acquire new users**. (i.e. We will promote the link via our newsletter and social channels. Options for custom integration are also available)
 
 # Ways to Integrate
 
 ## 'Navigate with Scenic' links on your website / in your app
-They send a route or location to Scenic to **navigate** it:
+Send a route or location to Scenic to **navigate** it:
 
 - When a user clicks a 'navigate' link/button on your website/app Scenic will open with the location/route ready to be navigated.
 - There is a link to send a location (single coordinate) and there are links to send routes with upto 200 coordinates.
 - When sending a single location the user will be navigated from his/her current position to that location
 - When sending a route the user will be navigated along the send coordinates, optionally including navigation from his/her current position to the first coordinate.
-- After the user taps 'Start Trip' the navigation begins.
+- After the user taps 'Start' the navigation begins.
 - Navigation links do NOT add a route to the users' account. After navigation finishes the route is 'gone'.
 
-## 'Import in Scenic' links on your website / in your app
-They send a route to Scenic to **import** it in a users account:
+## 'Send to Scenic' links on your website / in your app
+They send a route to Scenic, which is then added (**imported**) to the users Scenic account:
 
-- When a user clicks an 'import' link/button on your website/app the route will be sent to Scenic.
-- The route can than be imported by the user and added to his/her account.
+- When a user clicks an 'Send to Scenic' link/button on your website/app the route will be sent to Scenic.
+- The route can then be imported by the user and added to his/her account.
 - The user can also navigate, edit, duplicate and publish (i.e. make public for other Scenic users) a route after importing.
-
-> *Both the Import and the Navigate links are based on iOS Universal Links, but they have been customised. While regular universal links only open Scenic if tapped/clicked from an iOS app or from an iOS browser, the Scenic links wil redirect the user to the Scenic WebApp if browsing on a desktop.*
->
-> - *If the user is browsing on an iOS device or using your iOS App, and Scenic is installed, Scenic will automatically open upon clicking the link/button. If Scenic is not installed the App Store App will open on the Scenic page.*
-> - *If the user is not browsing on an iOS device the user is directed to the Scenic WebApp, upon where he/she can enter their Scenic credentials. The route/location is then uploaded to their Scenic account and upon opening Scenic on their device he/she will be notified that a route/location is ready to be imported or navigated.*
->
-> Because of this behaviour the customised universal links **don't work offline**. For the 'Navigate' links, [Direct Universal Links](directUniLinksForNavigation.md) are also available. They do work offline, but they don't redirect the user to the Scenic WebApp if browsing on a non-ios device. In stead they will open the App Store Scenic page.
 
 ## Custom integration
 Besides the Universal Links it's also possible to give your (potential new) users access to their routes directly from the Scenic App. Scenic users will see your site/app logo in the Scenic app. When they tap it they will be asked to 'Connect' their account to Scenic so they will be able to see their routes.
 
-This kind of integration is custom and is not covered in this repository, but if you're interested please feel free to [contact MotoMappers](http://www.motomappers.com/mailsupport.php). For an example please download the Scenic app and see how it already integrates with [Furkot](www.furkot.com) and [RouteYou](www.routeyou.com) in this way. 
+This kind of integration is custom and is not covered in this repository, but if you're interested please feel free to [contact ScenicApp](https://scenicapp.space/blog/scenic-faqs-en/). For an example please [download the Scenic app](https://itunes.apple.com/app/id1089668246) and see how it already integrates with [Furkot](www.furkot.com) and [RouteYou](www.routeyou.com) in this way. 
 
 # Technical Options
-There are 2 ways you can call the Scenic Universal Links
+There are 2 ways you can access the Scenic API
 
 1. Using GET request (links with parameters as part of the link)
 2. Using POST request (the parameters are included in the body of the request)
@@ -154,4 +150,13 @@ If I send a gpxurl for import, will that url need to be reachable forever? | No,
 App Store App opens while Scenic is installed? | This is a bug ([or feature?](http://stackoverflow.com/questions/34607023/branch-io-disable-right-arrow-button-bnc-lt-on-statusbar)) in the Apple Universal links.<br>- When Scenic opens through a universal link the status bar will display the domain of that universal link in the top right of the status bar. In scenic's case `scenicapp.space`.<br>- If a user taps on that, the iOS device thinks that from now on ALL universal links for this app should NOT open the App anymore, but in stead go to `scenicapp.space`, which, for Scenic, results in the App Store Scenic page opening.<br>-To resolve this, email the following link to your user `https://scenicapp.space/api/openScenic.php` and tell the user to open the email on his iPhone and 'tap and hold' on this link. An action sheet will appear where the user should choose 'Open in Scenic'. From then on all links will open in Scenic again.
 
 
+
+
+# IMPORTANT NOTE
+> *Both the Import and the Navigate links are based on iOS Universal Links, but they have been customised. While regular universal links only open Scenic if tapped/clicked from an iOS app or from an iOS browser, the Scenic links wil redirect the user to the Scenic WebApp if browsing on a desktop.*
+>
+> - *If the user is browsing on an iOS device or using your iOS App, and Scenic is installed, Scenic will automatically open upon clicking the link/button. If Scenic is not installed the App Store App will open on the Scenic page.*
+> - *If the user is not browsing on an iOS device, for import links, the user is directed to the Scenic WebApp, upon where he/she can enter their Scenic credentials. The route/location is then added to their Scenic account and upon opening Scenic on their device he/she will be notified that a route/location is ready to be imported.*
+>
+> Because of this behaviour the customised universal links **don't work offline**. For the 'Navigate' links, [Direct Universal Links](directUniLinksForNavigation.md) are also available. They do work offline.
 
