@@ -116,7 +116,7 @@ The JavaScript library also offers 6 functions:
 For more info and examples see the JavaScript folder of this repository.
 
 ### Swift Library
-The Swift Library is written in **Swift 3**
+The Swift Library is written in **Swift 5**
 
 #### Installation
 Drag the `ScenicAPI.swift` file to your project. Make sure to check 'Copy items if needed'.
