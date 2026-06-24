@@ -33,7 +33,7 @@ They send a route to Scenic, which is then added (**imported**) to the users Sce
 ## Custom integration
 Besides the Universal Links it's also possible to give your (potential new) users access to their routes directly from the Scenic App. Scenic users will see your site/app logo in the Scenic app. When they tap it they will be asked to 'Connect' their account to Scenic so they will be able to see their routes.
 
-This kind of integration is custom and is not covered in this repository, but if you're interested please feel free to [contact ScenicApp](https://scenicapp.space/blog/scenic-faqs-en/). For an example please [download the Scenic app](https://itunes.apple.com/app/id1089668246) and see how it already integrates with [Furkot](www.furkot.com) and [RouteYou](www.routeyou.com) in this way. 
+This kind of integration is custom and is not covered in this repository, but if you're interested please feel free to [contact ScenicApp](https://scenicapp.space/blog/scenic-faqs-en/). For an example please [download the Scenic app](https://itunes.apple.com/app/id1089668246) and see how it already integrates with [Furkot](https://trips.furkot.com) and [RouteYou](www.routeyou.com) in this way. 
 
 # Technical Options
 There are 2 ways you can access the Scenic API
