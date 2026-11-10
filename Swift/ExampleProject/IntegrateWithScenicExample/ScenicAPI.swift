@@ -108,7 +108,7 @@ class ScenicAPI {
      ****  polyline (required): Encoded Polyline (String) (https://developers.google.com/maps/documentation/utilities/polylinealgorithm)
      ****  the polyline has to contain at least 2 coordinates and at the most 200 coordinates
      ****  name (optional): the name of the route (String)
-     ****  routeMode (Optional): RouteMode.fast, .short, .efficient (Defaults to .fast)
+     ****  routeMode (Optional): RouteMode.fast, .short, .curvy (Defaults to .fast)
      ****  vehicleType (Optional): VehicleType.carMotorcycle, .bicycle, .pedestrian (Defaults to .carMotorcycle)
      **************************************************************/
 
@@ -126,7 +126,7 @@ class ScenicAPI {
      ****  - 6 digits precision for the lat and lon components is sufficient
      ****  - there should be at least 2 coordinate and at the most 200 coordinates
      ****  name (optional): the name of the route (String)
-     ****  routeMode (Optional): RouteMode.fast, .short, .efficient (Defaults to .fast)
+     ****  routeMode (Optional): RouteMode.fast, .short, .curvy (Defaults to .fast)
      ****  vehicleType (Optional): VehicleType.carMotorcycle, .bicycle, .pedestrian (Defaults to .carMotorcycle)
      **************************************************************/
     
@@ -677,7 +677,7 @@ extension String {
 public enum RouteMode: String {
     case fast = "F"
     case short = "S"
-    case efficient = "E"
+    case curvy = "C"
 }
 
 public enum VehicleType: String {

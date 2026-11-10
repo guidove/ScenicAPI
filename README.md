@@ -19,7 +19,7 @@ Send a route or location to Scenic to **navigate** it:
 - When a user clicks a 'navigate' link/button on your website/app Scenic will open with the location/route ready to be navigated.
 - There is a link to send a location (single coordinate) and there are links to send routes with upto 200 coordinates.
 - When sending a single location the user will be navigated from his/her current position to that location
-- When sending a route the user will be navigated along the send coordinates, optionally including navigation from his/her current position to the first coordinate.
+- When sending a route the user will be navigated along the send coordinates, optionally including navigation from his/her current position to the first coordinate (`guidance=start`, the default) or starting guidance where the user joins the route (`guidance=join`, see [Direct Universal Links](directUniLinksForNavigation.md)).
 - After the user taps 'Start' the navigation begins.
 - Navigation links do NOT add a route to the users' account. After navigation finishes the route is 'gone'.
 
